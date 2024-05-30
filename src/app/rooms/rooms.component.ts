@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Room, RoomList } from './room';
 import { CommonModule } from '@angular/common';
 import { RoomsListComponent } from "./rooms-list/rooms-list.component";
+import { title } from 'process';
 
 @Component({
     selector: 'hinv-rooms',
@@ -20,6 +21,7 @@ export class RoomsComponent implements OnInit {
 
   toggle() {
     this.hideRooms = !this.hideRooms;
+    this.title = 'Rooms List';
   }
 
   rooms : Room={
@@ -30,6 +32,7 @@ export class RoomsComponent implements OnInit {
 
   roomList : RoomList[]= [];
 
+  title='Room List';
 
   ngOnInit(): void {
     this.roomList=[ 
@@ -84,10 +87,30 @@ export class RoomsComponent implements OnInit {
         checkInTime: new Date('03-Feb-2024'),
         checkoutTime: new Date('03-Mar-2024')
       }
-    ]
+    ];
     }
   
+  selectedRoomVar! : RoomList;
+
   selectRoomParent(room : RoomList) {
     console.log(room);
+    this.selectedRoomVar = room;
+  }
+
+  addroom() {
+    const room:RoomList={
+      roomNumber: 7,
+      roomType: 'Deluxe Room1',
+      amenities: 'AC, WiFi, Kitchen, Bathroom',
+      price: 900,
+      photo: 'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg',
+      checkInTime: new Date('01-Feb-2024'),
+      checkoutTime: new Date('01-Mar-2024')  
+    };
+    console.log(this.roomList);
+    //this.roomList.push(room);
+    this.roomList = [...this.roomList,room];
+
+    
   }
 }

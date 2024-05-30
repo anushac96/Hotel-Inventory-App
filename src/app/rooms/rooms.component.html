@@ -12,8 +12,16 @@ Number of rooms: <div [ngStyle]="{'color':rooms.availableRooms?'green':'red'}"
 </div>
 <button (click)="toggle()">Toggle</button>
 
+<div *ngIf="selectedRoomVar">
+    {{selectedRoomVar | json}}
+</div>
 <div *ngIf="rooms.availableRooms>0"> 
     <hinv-rooms-list [rooms]="roomList"
+    [title]="title"
     (selectedRoom)="selectRoomParent($event)">
     </hinv-rooms-list>  
+</div>
+
+<div>
+    <button (click)="addroom()">Add Room</button>
 </div>
