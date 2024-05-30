@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Room, RoomList } from './room';
 import { CommonModule } from '@angular/common';
+import { RoomsListComponent } from "./rooms-list/rooms-list.component";
 
 @Component({
-  selector: 'hinv-rooms',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './rooms.component.html',
-  styleUrl: './rooms.component.css'
+    selector: 'hinv-rooms',
+    standalone: true,
+    templateUrl: './rooms.component.html',
+    styleUrl: './rooms.component.css',
+    imports: [CommonModule, RoomsListComponent]
 })
 export class RoomsComponent implements OnInit {
-  
-
 
   hotelName = 'Hilton Hotel';
   
@@ -88,4 +87,7 @@ export class RoomsComponent implements OnInit {
     ]
     }
   
+  selectRoomParent(room : RoomList) {
+    console.log(room);
+  }
 }
