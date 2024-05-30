@@ -1,0 +1,40 @@
+<h1>Welcome to {{hotelName}}</h1>
+
+<p>rooms works!</p>
+
+Number of rooms: <div [ngStyle]="{'color':rooms.availableRooms?'green':'red'}"
+[innerText]="numberOfRooms">
+</div>
+<!-- document.getElementById('numberOfRooms').innerText = numberOfRooms -->
+
+<div [hidden]="hideRooms">
+    Number of rooms: <div [innerText]="numberOfRooms"></div>
+</div>
+<button (click)="toggle()">Toggle</button>
+
+<div *ngIf="rooms.availableRooms>0">
+    Room List
+</div>
+
+<table>
+    <tr>
+        <th>Index</th>
+        <th>Even/Odd</th>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Price</th>
+        <th>Anemities</th>
+        <th>Check-In</th>
+        <th>Check-Out</th>
+    </tr>
+    <tr [ngClass]="e?'even':'odd'" *ngFor="let room of roomList; let i = index; let e=even;let o=odd">
+        <td>{{i}}</td>
+        <td>{{e?"Even":"Odd"}}</td>
+        <td>{{room.roomNumber}}</td>
+        <td>{{room.amenities }}</td>
+        <td>{{room.price}}</td>
+        <td>{{room.roomType | lowercase}}</td>
+        <td>{{room.checkInTime | date:'MM-dd-YYYY'}}</td>
+        <td>{{room.checkoutTime  | date}}</td>
+    </tr>
+</table>
